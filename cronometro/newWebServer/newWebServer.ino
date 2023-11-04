@@ -44,13 +44,27 @@ char html_template[] PROGMEM = R"=====(
         h1   {color: rgba(0, 0, 255, 0.87); font-size: 50px;}
       </style>
       <body style="max-width:400px;margin: auto;font-family:Arial, Helvetica, sans-serif;text-align:center">
-          <div><h1><br />FIRVI 2023</h1></div>
-          <div><h2><br />Categoría velocistas</h2></div>
+          <div><h1><br />FIRVI 2023<br/></h1></div>
+          <div><h2><br />Categoría velocistas<br/></h2></div>
           <div><p id="sensor1"></p><p id="sensor2"><p></div>
-          <div><h2 id="rondaHeader"><br/></h2></div>
-          <div><p id="tiempoRonda" style="font-size:100px;margin:0"></p></div>
-          <div><h2 id="intentoHeader"><br/></h2></div>
-          <div><p id="tiempoIntento" style="font-size:100px;margin:0"></p></div>
+          <table>
+           <tr>
+            <td>
+              <h2 id="rondaHeader"></h2>
+            <td>
+            <td>
+              <h2 id="intentoHeader"></h2>
+            <td>
+           </tr>
+           <tr>
+              <td>
+                <p id="tiempoRonda" style="font-size:100px;margin:0"></p>
+              </td>
+              <td>
+                <p id="tiempoIntento" style="font-size:100px;margin:0"></p>
+              </td>
+           </tr>
+          </table>                   
           <div><a href="#" id="btnRonda" ONCLICK='button()'> </a></div>
           <div><a href="#" id="btnIntento" ONCLICK='button2()'> </a></div>
 
