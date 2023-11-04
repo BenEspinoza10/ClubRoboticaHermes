@@ -243,7 +243,7 @@ void loop() {
     JSONtxt = "{\"State\":\""+(String)globalState+"\", \"Time\":\""+(String)totalTime+"\", \"globalTime\":\""+(String)minutos+":"+ (String)segundos+"\", \"sensor1\":\""+String(analogRead(sensor1Pin))+"\", \"sensor2\":\""+String(analogRead(sensor2Pin))+"\"   }";
     webSocket.broadcastTXT(JSONtxt);
     //detección laser 1 (inicio)
-    if (analogRead(sensor1Pin)>2000){
+    if (analogRead(sensor1Pin)<300){
       globalState = 3;
       totalStartTime= millis();
     }
@@ -267,7 +267,7 @@ void loop() {
     }    
     webSocket.broadcastTXT(JSONtxt);
     //detección laser 2 (fin)
-    if (analogRead(sensor2Pin)>2000){
+    if (analogRead(sensor2Pin)<300){
       globalState = 4;      
     }
   }//Fin intento
