@@ -42,6 +42,8 @@ char html_template[] PROGMEM = R"=====(
           background-color: #cc0605; border: none; color: white; padding: 16px 40px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;display: block;
         }         
         h1   {color: rgba(0, 0, 255, 0.87); font-size: 50px;}
+        td,th {text-align: center;padding-right: 50px;}        
+        table {width: 100%;}
       </style>
       <body style="max-width:400px;margin: auto;font-family:Arial, Helvetica, sans-serif;text-align:center">
           <div><h1><br />FIRVI 2023<br/></h1></div>
@@ -51,22 +53,22 @@ char html_template[] PROGMEM = R"=====(
            <tr>
             <td>
               <h2 id="rondaHeader"></h2>
-            <td>
+            </td>
             <td>
               <h2 id="intentoHeader"></h2>
-            <td>
+            </td>
            </tr>
            <tr>
               <td>
-                <p id="tiempoRonda" style="font-size:100px;margin:0"></p>
+                <p id="tiempoRonda" style="font-size:100px;margin:0; text-align: center;"></p>
               </td>
               <td>
-                <p id="tiempoIntento" style="font-size:100px;margin:0"></p>
+                <p id="tiempoIntento" style="font-size:100px;margin:0; text-align: center;"></p>
               </td>
            </tr>
           </table>                   
-          <div><a href="#" id="btnRonda" ONCLICK='button()'> </a></div>
-          <div><a href="#" id="btnIntento" ONCLICK='button2()'> </a></div>
+          <div style="text-align: center;padding-left: 50px"><a href="#" id="btnRonda" ONCLICK='button()'> </a></div>
+          <div style="text-align: center;padding-left: 50px"><a href="#" id="btnIntento" ONCLICK='button2()'> </a></div>
 
 
           <script>
