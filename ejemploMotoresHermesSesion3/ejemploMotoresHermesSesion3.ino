@@ -13,7 +13,7 @@ void Motoriz(int value) {
   } else {
     digitalWrite(BIN1, LOW);
     digitalWrite(BIN2, HIGH);
-    value *= -1;
+    value *= 1;
   }
   analogWrite(PWMB, value);
 }
