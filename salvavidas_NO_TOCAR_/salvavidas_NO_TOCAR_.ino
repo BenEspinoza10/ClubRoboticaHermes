@@ -1,11 +1,11 @@
 #include <QTRSensors.h>
 
 //Mapeo de pines
-#define AIN1 7
-#define AIN2 8
+#define AIN1 8
+#define AIN2 7
 #define PWMA 6
 
-#define BIN1 9  
+#define BIN1 9
 #define BIN2 4
 #define PWMB 5
 #define BUZZER 10
@@ -44,7 +44,7 @@ int fin = 0;
 //control de ruedas
 int ref = 0;
 
-void Motoriz(int value) {
+void Motorde(int value) {
   if ( value >= 0 ) {
     digitalWrite(BIN1, HIGH);
     digitalWrite(BIN2, LOW);
@@ -56,7 +56,7 @@ void Motoriz(int value) {
   analogWrite(PWMB, value);
 }
 // FunciÃ³n accionamiento motor derecho
-void Motorde(int value) {
+void Motoriz(int value) {
   if ( value >= 0 ) {
     digitalWrite(AIN1, HIGH);
     digitalWrite(AIN2, LOW);
@@ -104,7 +104,7 @@ void setup() {
 }
 
 void loop() {
-  siguelineas(0.4,0.15,75,100,150);
+  siguelineas(0.45,0.15,75,50,150);
   hitos();
 }
 
@@ -132,7 +132,7 @@ void siguelineas(float KP,float KI, float KD,int vel_base,int lim){
   else if (power_difference < -lim)
     power_difference = -lim;
       
-    Motor(vel_base - power_difference, vel_base +  power_difference);  
+    Motor(vel_base + power_difference, vel_base -  power_difference);  
 }
 void hitos() {
   int Hiz = analogRead(HIZ);

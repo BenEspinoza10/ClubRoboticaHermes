@@ -1,12 +1,12 @@
-#define AIN1 7
-#define AIN2 8
+#define AIN1 8
+#define AIN2 7
 #define PWMA 6
 
 #define BIN1 9
 #define BIN2 4
 #define PWMB 5
 
-void Motoriz(int value) {
+void Motorde(int value) {
   if ( value >= 0 ) {
     digitalWrite(BIN1, HIGH);
     digitalWrite(BIN2, LOW);
@@ -18,7 +18,7 @@ void Motoriz(int value) {
   analogWrite(PWMB, value);
 }
 // Función accionamiento motor derecho
-void Motorde(int value) {
+void Motoriz(int value) {
   if ( value >= 0 ) {
     digitalWrite(AIN1, HIGH);
     digitalWrite(AIN2, LOW);
@@ -49,8 +49,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   Motor(255,255);
-  delay(1000);
-  Motor(-255,-255);
   delay(1000);
   Motor(0,255);
   delay(1500);
