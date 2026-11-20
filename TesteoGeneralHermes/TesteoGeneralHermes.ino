@@ -94,11 +94,11 @@ void loop() {
   }
 
   if (modo == 1) {
-    Motor(70, 70);
+    Motor(100, 100);
     delay(2000);
-    Motor(-70, -70);
+    Motor(-100, -100);
     delay(2000);
-    Motor(70,0);
+    Motor(100,0);
     delay(2000);
     Motor(0, 0);
     delay(500);

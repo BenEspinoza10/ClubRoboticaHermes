@@ -1,8 +1,8 @@
 #include <QTRSensors.h>
 
 //Mapeo de pines
-#define AIN1 8
-#define AIN2 7
+#define AIN1 7
+#define AIN2 8
 #define PWMA 6
 
 #define BIN1 9
@@ -21,13 +21,11 @@ int error3 = 0;
 int error4 = 0;
 int error5 = 0;
 int error6 = 0;
-#define NUM_SENSORS             6
-#define NUM_SAMPLES_PER_SENSOR  4
-# define EMITTER_PIN 11
-QTRSensorsAnalog qtra((unsigned char[]) {
-  A5, A4, A3, A2, A1, A0
-},
-NUM_SENSORS, NUM_SAMPLES_PER_SENSOR, EMITTER_PIN);
+#define NUM_SENSORS 6
+
+#define EMITTER_PIN 11
+QTRSensors qtr;
+const uint8_t SensorCount = NUM_SENSORS;
 unsigned int sensorValues[NUM_SENSORS];
 
 //geo
@@ -39,7 +37,7 @@ int geo = 0;
 int geo1 = 0, geo2 = 0, geo3 = 0, geo4 = 0, geo5 = 0;
 int CHiz;
 int CHde;
-int umbral = 750;
+int umbral = 500;
 int fin = 0;
 //control de ruedas
 int ref = 0;
@@ -85,11 +83,14 @@ void setup() {
   pinMode(BUZZER, OUTPUT);
   pinMode(HIZ, INPUT);
   pinMode(HDE, INPUT);
+  qtr.setTypeAnalog();
+  qtr.setSensorPins((const uint8_t[]){A5, A4, A3, A2, A1, A0}, SensorCount);
+  qtr.setEmitterPin(EMITTER_PIN);
   while (digitalRead(BOTON) == 0); // Se sale del bucle cuando se aprieta el botón
   tone(BUZZER, 2000, 500);
-  for ( int i = 0; i < 400; i++) {
+  for ( int i = 0; i < 200; i++) {
     digitalWrite(LED, HIGH);
-    qtra.calibrate();
+    qtr.calibrate();
     digitalWrite(LED, LOW);
   }
 
@@ -104,12 +105,12 @@ void setup() {
 }
 
 void loop() {
-  siguelineas(0.45,0.15,75,50,150);
+  siguelineas(0.4,0.15,70,50,150);
   hitos();
 }
 
 void siguelineas(float KP,float KI, float KD,int vel_base,int lim){
-  int posicion = qtra.readLine(sensorValues, true, true);
+  int posicion = qtr.readLineWhite(sensorValues);
   posicion = map(posicion, 0, 5000, -255, 255);
   Serial.println(posicion);
 
